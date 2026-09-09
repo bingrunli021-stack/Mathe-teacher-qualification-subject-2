@@ -1,0 +1,6 @@
+const {test}=require('node:test'),assert=require('node:assert/strict'),M=require('../web/model.js');
+const e=(id,seq,kind,payload)=>({id,seq,unit_id:'p',kind,payload,created_at:'2026-09-09T16:01:00Z'});
+test('duplicate retries and shuffled device events do not reset time or status',()=>{const a=e('a',1,'time',{seconds:20}),b=e('b',2,'status',{value:'已掌握'}),c=e('c',3,'time',{seconds:15});const s=M.reduce([c,a,b,a]);assert.equal(s.units.p.seconds,35);assert.equal(s.units.p.status,'已掌握');assert.equal(s.days['2026-09-10'].seconds,35);});
+test('concurrent notes preserve both versions',()=>{const s=M.reduce([e('b',2,'note',{text:'手机笔记'}),e('a',1,'note',{text:'电脑笔记'})]);assert.deepEqual(s.units.p.notes.map(n=>n.text),['电脑笔记','手机笔记']);});
+test('wrong answers schedule next-day review and preserve accumulated mistakes',()=>{const s=M.reduce([e('a',1,'answer',{correct:false}),e('b',2,'answer',{correct:true})]);assert.equal(s.units.p.wrong,1);assert.equal(s.units.p.answers,2);assert.equal(s.units.p.due,'2026-09-12T16:01:00.000Z');});
+test('Beijing date boundary is independent of local timezone',()=>{assert.equal(M.day('2026-09-09T15:59:59Z'),'2026-09-09');assert.equal(M.day('2026-09-09T16:00:00Z'),'2026-09-10');});

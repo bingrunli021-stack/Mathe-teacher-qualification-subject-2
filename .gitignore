@@ -1,0 +1,9 @@
+node_modules/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+ocr/
+imports/
+.env*
+!.env.example
