@@ -4,3 +4,6 @@
 @media(max-width:720px){.countdown{grid-template-columns:1fr;padding:18px}.countdown strong{grid-row:auto;grid-column:auto;font-size:30px}.source-page{padding:16px 14px;margin:14px -4px}.page-label{margin:-16px -14px 14px}.source table{font-size:.82em}.source th,.source td{padding:8px}.source-option{padding-left:1em}.source-page p{text-indent:1.5em}}
 
 .next-unit{margin:28px 0 56px;padding:22px 24px;border:1px solid var(--line);border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:20px}.next-unit div{display:grid;gap:6px}.next-unit strong{font-size:18px;line-height:1.5}.next-unit button{flex-shrink:0}.chapter-done{background:var(--tint)}@media(max-width:720px){.next-unit{align-items:stretch;flex-direction:column;margin-bottom:34px;padding:18px}.next-unit button{width:100%;padding:13px}.page-label{position:static}}
+
+/* Collapsible navigation on tablet and desktop; mobile stays overlay-based. */
+.mobile-menu{display:inline-block}.sidebar.closed{display:none!important}.main.wide{margin-left:0}@media(max-width:720px){.sidebar.closed{display:none!important}}
