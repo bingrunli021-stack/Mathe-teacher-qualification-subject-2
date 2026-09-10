@@ -6,7 +6,7 @@ import argparse, hashlib, json, re
 from pathlib import Path
 
 SPECS = [
-('c1intro','c1s1','本章考情与学习说明',3,[(7,2,27)]),
+('c1intro','c1s1','本章考情与学习说明',3,[(7,0,27)]),
 ('c1p1','c1s1','教育的内涵',4,[(8,2,99),(9,2,16)]),
 ('c1p2','c1s1','教育的基本要素',5,[(9,17,99)]),
 ('c1p3','c1s1','教育的属性',6,[(10,2,99),(11,2,31)]),
@@ -149,6 +149,7 @@ def make_questions(pid,title,exam,explain):
 def classify(text):
     t=text.strip()
     if t in ('记忆口诀','考点解读','易混辨析','知识延伸','备考点拨','「强化练习/参考答案」','「要点回顾」'): return 'callout'
+    if re.match(r'^第[一二三四五六七八九十]+[章节]',t): return 'h2'
     if re.match(r'^[一二三四五六七八九十]+、',t): return 'h2'
     if re.match(r'^（[一二三四五六七八九十]+）',t): return 'h3'
     if re.match(r'^\d+\.',t) and len(t)<38 and not any(x in t for x in '？?（('): return 'h4'
