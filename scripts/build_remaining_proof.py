@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the first-pass Chapter 2–5 import from saved page OCR.
+"""Build the first-pass Chapter 2–9 import from saved page OCR.
 
 The protected output must stay outside web/ and git. OCR is navigation/search aid;
 the scan image remains the source of truth. Any uncertain transcription is marked.
@@ -13,7 +13,7 @@ import re
 from pathlib import Path
 
 
-SOURCE_SHA256 = "489b262bc7d97d1ceef49efb92f6bb128de64d071d02b858ad0cb3e705d2ea8a"
+SOURCE_SHA256 = "ee154022841f3bc72695cb9ba687d8dcd5460dea42e4d8521a0ec8e631416588"
 
 # (chapter, section, section title, section end, [(point title, printed page, zero-based OCR line)])
 OUTLINE = [
@@ -123,6 +123,80 @@ OUTLINE = [
     (5, 7, "中学生交往指导", 264, [
         ("中学生的同伴关系", 262, 2), ("中学生的性心理", 262, 16),
         ("中学生异性交往的指导", 263, 7), ("强化练习与要点回顾", 264, 1),
+    ]),
+    (6, 1, "中学生的心理健康", 271, [
+        ("心理健康的概念", 266, 2), ("心理健康的标准", 266, 7),
+        ("学生心理健康问题的主要表现", 266, 26), ("中学生常见的心理问题", 267, 14),
+        ("学校心理健康教育", 270, 7), ("强化练习与要点回顾", 270, 26),
+    ]),
+    (6, 2, "学校心理辅导", 278, [
+        ("学校心理辅导的一般目标", 272, 2), ("学校心理辅导的原则", 272, 6),
+        ("学校心理辅导的方法", 273, 18), ("强化练习与要点回顾", 277, 8),
+    ]),
+    (6, 3, "压力与挫折", 282, [
+        ("压力", 279, 2), ("挫折", 280, 1), ("强化练习与要点回顾", 281, 26),
+    ]),
+    (7, 1, "品德的心理结构与道德发展理论", 290, [
+        ("品德的内涵", 284, 2), ("品德的心理结构", 284, 7),
+        ("皮亚杰的道德发展理论", 285, 13), ("柯尔伯格的道德发展理论", 286, 29),
+        ("强化练习与要点回顾", 288, 22),
+    ]),
+    (7, 2, "中学生品德的形成与发展", 295, [
+        ("中学生品德发展的特点", 291, 2), ("品德形成的一般过程", 291, 17),
+        ("影响品德形成与发展的因素", 292, 15), ("促进中学生形成良好品德的方法", 293, 8),
+        ("强化练习与要点回顾", 294, 16),
+    ]),
+    (7, 3, "德育的概念与内容", 299, [
+        ("德育的概念", 296, 2), ("学校德育的内容", 296, 21),
+        ("新时期德育发展的新主题", 298, 3), ("强化练习与要点回顾", 298, 21),
+    ]),
+    (7, 4, "德育过程", 304, [
+        ("德育过程的内涵", 300, 2), ("德育过程与品德形成过程的关系", 300, 8),
+        ("德育过程的构成要素", 300, 25), ("德育过程的矛盾", 301, 10),
+        ("德育过程的基本规律", 301, 16), ("强化练习与要点回顾", 303, 8),
+    ]),
+    (7, 5, "德育的原则、途径与方法", 314, [
+        ("德育原则", 305, 2), ("德育途径", 308, 15), ("德育方法", 309, 21),
+        ("强化练习与要点回顾", 312, 30),
+    ]),
+    (8, 1, "班集体与班级管理", 320, [
+        ("班级与班集体", 316, 2), ("班集体的形成与培养", 316, 21),
+        ("班级管理", 318, 9), ("强化练习与要点回顾", 319, 26),
+    ]),
+    (8, 2, "课堂管理", 331, [
+        ("课堂管理概述", 321, 2), ("课堂群体关系管理", 322, 1),
+        ("课堂气氛管理", 323, 19), ("课堂纪律管理", 325, 15),
+        ("课堂问题行为", 327, 21), ("强化练习与要点回顾", 330, 16),
+    ]),
+    (8, 3, "班主任工作", 338, [
+        ("班主任概述", 332, 2), ("班主任应具备的基本条件", 333, 31),
+        ("班主任工作的基本内容与方法", 334, 12), ("强化练习与要点回顾", 337, 4),
+    ]),
+    (8, 4, "课外活动", 342, [
+        ("课外活动的概念与意义", 339, 2), ("课外活动的主要内容", 339, 11),
+        ("课外活动的组织形式", 340, 7), ("课外活动的特点", 340, 20),
+        ("课外活动组织管理的要求", 341, 12), ("强化练习与要点回顾", 341, 17),
+    ]),
+    (8, 5, "教师心理", 354, [
+        ("教师的角色心理", 343, 2), ("教师的心理特征", 347, 1),
+        ("教师的成长心理", 349, 1), ("教师的心理健康", 351, 3),
+        ("强化练习与要点回顾", 353, 15),
+    ]),
+    (9, 1, "辨析题备考攻略", 363, [
+        ("辨析题题型介绍", 356, 2), ("辨析题考查特点", 356, 7),
+        ("辨析题作答思路", 357, 23), ("辨析题分类解读", 358, 6),
+        ("辨析题考点预测", 360, 27), ("强化练习与参考答案", 362, 23),
+    ]),
+    (9, 2, "简答题备考攻略", 368, [
+        ("简答题题型介绍", 364, 2), ("简答题考查特点", 364, 6),
+        ("简答题分类解读", 365, 4), ("简答题考点预测", 366, 15),
+        ("强化练习与参考答案", 368, 8),
+    ]),
+    (9, 3, "材料分析题备考攻略", 376, [
+        ("材料分析题题型介绍", 369, 2), ("材料分析题考查特点", 369, 5),
+        ("评做法类材料分析题", 369, 20), ("分析观点、问题或原因类材料分析题", 371, 18),
+        ("提措施或建议类材料分析题", 373, 8), ("材料分析题考点预测", 374, 29),
+        ("强化练习与参考答案", 375, 10),
     ]),
 ]
 
@@ -236,10 +310,12 @@ def questions(point_id: str, title: str, snippets: list[str]) -> list[dict]:
     ]
 
 
-def build(ocr_dir: Path) -> tuple[list[dict], list[dict]]:
+def build(ocr_dir: Path, selected_chapters: set[int], source_sha256: str) -> tuple[list[dict], list[dict]]:
     catalog, contents = [], []
     chapter_sections: dict[int, set[int]] = {}
     for chapter, section, _, section_end, points in OUTLINE:
+        if chapter not in selected_chapters:
+            continue
         chapter_sections.setdefault(chapter, set()).add(section)
         for point_index, (title, start_page, start_line) in enumerate(points, 1):
             if point_index < len(points):
@@ -273,8 +349,8 @@ def build(ocr_dir: Path) -> tuple[list[dict], list[dict]]:
             contents.append({
                 "id": point_id, "blocks": blocks, "explanation": explanation, "exam": exam,
                 "pitfalls": pitfalls, "questions": questions(point_id, title, snippets),
-                "verification": "第二至第五章按扫描原页完成首轮数字化；低置信度及可能误识别的人名、年份、理论名和定义已标“待核对”，扫描原页为最高优先级依据。",
-                "source_sha256": SOURCE_SHA256,
+                "verification": "本章按扫描原页完成首轮数字化；低置信度及可能误识别的人名、年份、理论名和定义已标“待核对”，扫描原页为最高优先级依据。",
+                "source_sha256": source_sha256,
             })
     return catalog, contents
 
@@ -295,6 +371,8 @@ def sql_literal_json(value: object) -> str:
 
 def write_sql(output_dir: Path, catalog: list[dict], contents: list[dict]) -> None:
     catalog_json = sql_literal_json(catalog)
+    parent_ids = sorted({row["parent_id"] for row in catalog} | {row["parent_id"].split("s")[0] for row in catalog})
+    parent_array = ",".join("'" + value.replace("'", "''") + "'" for value in parent_ids)
     catalog_sql = f"""begin;
 insert into public.tq_catalog(id,parent_id,kind,title,sort_order,page_start,page_end,ready)
 select id,parent_id,kind,title,sort_order,page_start,page_end,ready
@@ -302,7 +380,7 @@ from jsonb_to_recordset('{catalog_json}'::jsonb)
 as x(id text,parent_id text,kind text,title text,sort_order int,page_start int,page_end int,ready boolean)
 on conflict(id) do update set parent_id=excluded.parent_id,kind=excluded.kind,title=excluded.title,
 sort_order=excluded.sort_order,page_start=excluded.page_start,page_end=excluded.page_end,ready=excluded.ready;
-update public.tq_catalog set ready=true where id ~ '^c[2-5](s[0-9]+)?$';
+update public.tq_catalog set ready=true where id = any(array[{parent_array}]::text[]);
 commit;
 """
     (output_dir / "000_catalog.sql").write_text(catalog_sql, encoding="utf-8")
@@ -326,9 +404,16 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("ocr_dir", type=Path)
     parser.add_argument("output_dir", type=Path)
+    parser.add_argument("--chapters", type=int, nargs="+", default=list(range(2, 10)))
+    parser.add_argument("--source-sha256", default=SOURCE_SHA256)
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    catalog, contents = build(args.ocr_dir)
+    selected_chapters = set(args.chapters)
+    if not selected_chapters <= set(range(2, 10)):
+        parser.error("chapters must be between 2 and 9")
+    if not re.fullmatch(r"[0-9a-f]{64}", args.source_sha256):
+        parser.error("source SHA-256 must contain 64 lowercase hexadecimal characters")
+    catalog, contents = build(args.ocr_dir, selected_chapters, args.source_sha256)
     validate(catalog, contents)
     (args.output_dir / "catalog_remaining.json").write_text(json.dumps(catalog, ensure_ascii=False), encoding="utf-8")
     (args.output_dir / "content_remaining.json").write_text(json.dumps(contents, ensure_ascii=False), encoding="utf-8")
