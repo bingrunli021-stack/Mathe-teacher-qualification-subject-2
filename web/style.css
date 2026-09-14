@@ -7,15 +7,25 @@
 .source-h2{padding-bottom:.45em;border-bottom:2px solid var(--ink);font-size:1.28em!important;font-weight:800;letter-spacing:.02em}
 .source-h3{padding-left:.7em;border-left:4px solid var(--ink);font-size:1.12em!important;font-weight:750}
 .source-h4{font-size:1em!important;font-weight:750;color:var(--ink)}
-.source-definition,.source-key{margin:1.2em 0;padding:15px 18px;border-radius:9px}
-.source-definition{border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));background:color-mix(in srgb,var(--tint) 68%,var(--surface))}
-.source-key{border-left:5px solid #d7a32f;background:#fff9e9}
-.dark .source-key{background:#3d3420}
-.source-definition>span,.source-key>span,.source-example>span{display:inline-block;margin-bottom:.55em;font:750 12px/1.4 Inter,"Noto Sans SC",sans-serif;letter-spacing:.08em}
-.source-definition>span{color:var(--accent)}
-.source-key>span{color:#95680a}
-.dark .source-key>span{color:#f1ca72}
-.source-definition p,.source-key p{margin:0!important;text-indent:0!important;font-weight:600;line-height:1.8!important}
+.study-mark{margin:1.2em 0;padding:15px 18px;border-radius:9px;transition:background .16s,border-color .16s,padding .16s}
+.source-definition,.source-key{border:1px solid color-mix(in srgb,#c43d35 32%,var(--line));border-left:5px solid #c43d35;background:#fff5f3}
+.source-confuse{border:1px solid color-mix(in srgb,#c48a18 32%,var(--line));border-left:5px solid #c48a18;background:#fff9e8}
+.dark .source-definition,.dark .source-key{background:#402725;border-color:#73403c;border-left-color:#ff8178}
+.dark .source-confuse{background:#3d3420;border-color:#6f5b30;border-left-color:#e7b958}
+.study-mark>span,.source-example>span{display:inline-block;margin-bottom:.55em;font:750 12px/1.4 Inter,"Noto Sans SC",sans-serif;letter-spacing:.08em}
+.source-definition>span,.source-key>span{color:#a92f29}
+.source-confuse>span{color:#8e6208}
+.dark .source-definition>span,.dark .source-key>span{color:#ffaaa3}
+.dark .source-confuse>span{color:#f1ca72}
+.study-mark p{margin:0!important;text-indent:0!important;color:var(--ink);font-weight:600;line-height:1.8!important}
+.score-word{font-weight:850;text-decoration:underline;text-decoration-color:color-mix(in srgb,#c43d35 42%,transparent);text-decoration-thickness:2px;text-underline-offset:.18em}
+.contrast-table{padding:0 10px 10px;border-left:4px solid #c48a18;background:color-mix(in srgb,#fff9e8 72%,var(--surface));border-radius:7px}
+.dark .contrast-table{background:#302c22}
+.reader.marks-off .study-mark{margin:.75em 0;padding:0;border:0;background:transparent}
+.reader.marks-off .study-mark>span{display:none}
+.reader.marks-off .study-mark p{font-weight:400}
+.reader.marks-off .score-word{font-weight:inherit;text-decoration:none}
+.reader.marks-off .contrast-table{padding:0;border-left:0;background:transparent}
 .source-example{margin:.75em 0!important;padding-left:1.2em;color:var(--muted);font-size:.94em;text-indent:0!important}
 .source-example>span{margin-right:.7em;margin-bottom:0;padding:2px 6px;border:1px solid var(--line);border-radius:4px;color:var(--muted)}
 .source table caption{font-size:1.02em;font-weight:800;color:var(--ink)}
@@ -23,7 +33,7 @@
 .source table tbody td:first-child{font-weight:650}
 .figure-note{border-left:4px solid var(--muted)}
 .source-callout{letter-spacing:.04em}
-@media(max-width:720px){.source-definition,.source-key{padding:13px 14px}.source-h2{font-size:1.18em!important}.source-h3{font-size:1.07em!important}.table-wrap{margin-left:-8px;margin-right:-8px}}
+@media(max-width:720px){.study-mark{padding:13px 14px}.source-h2{font-size:1.18em!important}.source-h3{font-size:1.07em!important}.table-wrap{margin-left:-8px;margin-right:-8px}}
 
 .next-unit{margin:28px 0 56px;padding:22px 24px;border:1px solid var(--line);border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:space-between;gap:20px}.next-unit div{display:grid;gap:6px}.next-unit strong{font-size:18px;line-height:1.5}.next-unit button{flex-shrink:0}.chapter-done{background:var(--tint)}@media(max-width:720px){.next-unit{align-items:stretch;flex-direction:column;margin-bottom:34px;padding:18px}.next-unit button{width:100%;padding:13px}.page-label{position:static}}
 
