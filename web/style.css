@@ -39,3 +39,7 @@
 
 /* Collapsible navigation on tablet and desktop; mobile stays overlay-based. */
 .mobile-menu{display:inline-block}.sidebar.closed{display:none!important}.main.wide{margin-left:0}@media(max-width:720px){.sidebar.closed{display:none!important}}
+
+.close-nav{display:block;margin:0 0 18px auto;position:sticky;top:0;z-index:1;background:var(--surface)}.nav-backdrop{display:none}.nav-backdrop[hidden]{display:none!important}@media(max-width:720px){.nav-backdrop{display:block;position:fixed;inset:0;z-index:7;border:0;border-radius:0;background:#0006;padding:0}.sidebar.open{z-index:8}}
+
+.close-nav[hidden]{display:none!important}
