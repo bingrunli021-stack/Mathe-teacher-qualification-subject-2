@@ -2,7 +2,7 @@
 const db=supabase.createClient(TQ_CONFIG.url,TQ_CONFIG.publishableKey),M=TQModel,$=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let user,catalog=[],events=[],state=M.reduce([]),siteSettings={},route='home',unit,content,timing=false,timerBusy=false,syncBusy=false,timerHandle,device=crypto.randomUUID(),pending=[],clockOffset=0,sidebarHidden=localStorage.getItem('tq-sidebar-hidden')==='1'||matchMedia('(max-width:720px)').matches;
-const duration=s=>Math.floor((s||0)/60)+' 分 '+String((s||0)%60).padStart(2,'0')+' 秒';
+const duration=s=>{const minutes=Math.floor(Math.max(0,Number(s)||0)/60);return Math.floor(minutes/60)+'小时'+minutes%60+'分钟';};
 const draftKey=()=>user&&unit?'tq-draft-'+user.id+'-'+unit.id:null;
 const noteText=u=>sessionStorage.getItem(draftKey())??u.notes?.at(-1)?.text??'';
 const now=()=>Date.now()+clockOffset;
