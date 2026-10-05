@@ -43,3 +43,5 @@
 .close-nav{display:block;margin:0 0 18px auto;position:sticky;top:0;z-index:1;background:var(--surface)}.nav-backdrop{display:none}.nav-backdrop[hidden]{display:none!important}@media(max-width:720px){.nav-backdrop{display:block;position:fixed;inset:0;z-index:7;border:0;border-radius:0;background:#0006;padding:0}.sidebar.open{z-index:8}}
 
 .close-nav[hidden]{display:none!important}
+
+.catalog button.current-unit{background:var(--tint);color:var(--accent);border-left:3px solid var(--accent);font-weight:700}.section-title.current-section{color:var(--accent);font-weight:700}
