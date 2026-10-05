@@ -3,12 +3,16 @@
 const day=t=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(t));
 function blank(){return {status:'未学习',seconds:0,wrong:0,answers:0,correct:0,notes:[],highlights:[],attempts:[]};}
 function reduce(events){
-  const s={units:{},days:{},settings:{}};
+  const s={units:{},days:{},settings:{},seconds:0};
   const ordered=[...new Map(events.map(e=>[e.id,e])).values()].sort((a,b)=>(a.seq||Infinity)-(b.seq||Infinity));
   for(const e of ordered){
     const p=e.payload||{};
     if(e.kind==='settings'){Object.assign(s.settings,p);continue;}
     if(e.kind==='plan'){Object.assign(s.days[p.day]??={seconds:0},{plan:p});continue;}
+    if(e.kind==='time'){
+      const seconds=Math.max(0,Number(p.seconds)||0);s.seconds+=seconds;
+      const d=day(e.created_at);(s.days[d]??={seconds:0}).seconds+=seconds;
+    }
     if(!e.unit_id)continue;
     const u=s.units[e.unit_id]??=blank();
     if(e.kind==='status')u.status=p.value;
@@ -23,7 +27,7 @@ function reduce(events){
     }
     if(e.kind==='time'){
       u.seconds+=p.seconds||0;
-      const d=day(e.created_at);(s.days[d]??={seconds:0}).seconds+=p.seconds||0;
+
     }
   }
   return s;
